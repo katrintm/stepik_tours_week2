@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>{{ tour_title }}  {{ tour_stars }} ★</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container mt-3">
+      {% include 'tours/navbar.html' %}
+      <h1 class="display-3 mt-4" data-test="title">{{ tour_title }}  {{ tour_stars }} ★</h1>
+      <!-- HERO -->
+      <p class="lead" data-test="lead" style="text-transform:uppercase"><span data-test="country">{{ tour_country }}</span> <span data-text="departure">{{ tour_departure }}</span> <span data-text="nights">{{ tour_nights }}</span> ночей</p>
+      <img data-test="picture" src="{{ tour_picture }}" alt="" style="weight:450px;height:300px;">
+      <p class="my-4 w-75" data-test="description">{{ tour_description }}</p>
+      <a href="" class="btn btn-success btn-lg" data-test="buybutton">Купить тур за <span data-test="price">{{ tour_price }}</span></a>
+      {% include 'tours/footer.html' %}
+    </div>
+  </body>
+</html>

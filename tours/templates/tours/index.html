@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title> <!-- Не использую extends для этой части когда, т.к. в tour.html другой title -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container mt-3">
+      {% include 'tours/navbar.html' %}
+      <!-- HERO -->
+      <div class="jumbotron text-center mt-4">
+        <h1 class="display-4">Всякие туры</h1>
+        <p class="lead">{{ subtitle }}</p>
+        <p class="mt-5 w-50 mx-auto">{{ description }}</p>
+      </div>
+      <!-- CARDS -->
+      <div class="row mt-5" data-test="cards">
+      {% for key, value in tours.items %}
+        <div class="col-4" data-test="card">
+            <div class="card mb-3" >
+              <a href="/tour/{{ key }}"><img src="{{ value.picture }}" class="card-img-top img-fluid" data-test="picture" style="max-width:100%;height:200px;"></a>
+              <div class="card-body">
+                <h5 class="card-title">{{ value.title }}</h5>
+                <p class="card-text" -webkit-line-clamp="2">{{ value.description | truncatechars:100 }}</p>
+                <a href="/tour/{{ key }}" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
+              </div>
+            </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% include 'tours/footer.html' %}
+    </div>
+  </body>
+</html>
